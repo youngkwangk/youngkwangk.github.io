@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pigeon Privacy</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<h1>Privacy Policy</h1>
+<p class="muted">Pigeon · Last updated October 12, 2026</p>
+
+<h2>Summary</h2>
+<p>Pigeon reads your Gmail on your iPhone, not on a server. It has no ads, analytics or tracking. Its optional relay stores only what it needs to deliver notifications, scheduled sends and snoozes, and it never stores the content of your mail.</p>
+
+<h2>Google data Pigeon accesses</h2>
+<ul>
+  <li><strong>Gmail</strong> (<code>gmail.modify</code>): your messages, drafts, labels and attachments, so the app can show them, and permission to send mail and change labels (archive, star, read/unread, move, spam, trash) when you ask it to.</li>
+  <li><strong>Your email address</strong> (<code>openid</code>, <code>email</code>): to identify each account you add.</li>
+</ul>
+
+<h2>On your iPhone</h2>
+<ul>
+  <li>Sign-in tokens are kept in the iOS Keychain.</li>
+  <li>Recent conversations, drafts, unsent changes and settings are saved on the device, so the app opens quickly and works offline.</li>
+  <li>Recipient suggestions are learned on the device from your mail.</li>
+  <li>Apple Intelligence features, such as plain-language search, finding dates and to-dos, and the tone check before sending, run on Apple's on-device model. Mail is not sent to any server for them.</li>
+</ul>
+
+<h2>The notification relay</h2>
+<p>Gmail can only send its change notices to Google Cloud, not to a phone, and Gmail's API has no scheduled send or snooze. Pigeon uses a small relay, hosted on Cloudflare, to fill those gaps. It is used only if you turn on notifications, scheduled send or snooze. For each Gmail account that uses it, the relay stores:</p>
+<ul>
+  <li>your email address and your devices' push notification tokens;</li>
+  <li>an encrypted Google refresh token, so it can check Gmail for new mail and carry out scheduled sends and snoozes while your phone is off;</li>
+  <li>for each scheduled send or snooze, only the draft or conversation ID and the time, never the message content;</li>
+  <li>suggested to-dos and events, encrypted with a key kept in your iCloud Keychain, which the relay does not have. They are deleted when they expire.</li>
+</ul>
+<p>When new mail arrives, the relay reads that message's sender, subject and a short snippet from Gmail and passes them to Apple's push notification service to show the notification. It does not store them. Its operational logs record your email address and what kind of action happened, not mail content.</p>
+
+<h2>Other services</h2>
+<ul>
+  <li><strong>Google</strong>: Gmail and sign-in, under <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</li>
+  <li><strong>Apple</strong>: push notifications, iCloud Keychain and Apple Intelligence.</li>
+  <li><strong>Cloudflare</strong>: hosts the relay.</li>
+  <li><strong>Gravatar</strong>: only if you turn on Gravatar sender photos. It receives a SHA-256 hash of the sender's email address, not the address itself.</li>
+</ul>
+
+<h2>What Pigeon does not do</h2>
+<ul>
+  <li>It does not sell, rent or share your data.</li>
+  <li>It does not use your data for advertising, analytics or profiling.</li>
+  <li>It does not use your data to train AI models.</li>
+  <li>No person reads your mail. The only exceptions would be with your explicit permission for a specific message, for security purposes, or to comply with the law.</li>
+</ul>
+
+<h2>Google API Services User Data Policy</h2>
+<p>Pigeon's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+<h2>Removing your data</h2>
+<ul>
+  <li>Removing an account in Pigeon deletes its sign-in and saved data from the device, cancels its scheduled sends and snoozes, and unregisters the device from the relay. Its encrypted to-dos on the relay expire on their own.</li>
+  <li>Deleting the app removes everything stored on the device.</li>
+  <li>You can revoke Pigeon's access at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. The relay then can no longer use its stored token, and it drops that account's devices and jobs.</li>
+</ul>
+
+<h2>Contact</h2>
+<p><a href="https://github.com/youngkwangk/youngkwangk.github.io/issues">Open an issue on GitHub</a>.</p>
+
+<p><a href="./">← Pigeon</a> · <a href="../">All apps</a></p>
+</body>
+</html>
