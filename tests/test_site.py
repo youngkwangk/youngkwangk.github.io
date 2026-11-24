@@ -160,6 +160,14 @@ class SiteTests(unittest.TestCase):
         self.assertTrue(path.is_file())
         parser = parse_page(path)
         destinations = {local_destination(path, href) for href in parser.links}
+        # GitHub Pages serves 404.html at the missing URL's own path, so local
+        # links and the stylesheet must be root-relative to work from any depth.
+        local_refs = [href for href in parser.links if local_destination(path, href) is not None]
+        local_refs += [attrs["href"] for tag, attrs, _ in parser.elements
+                       if tag == "link" and "href" in attrs]
+        for href in local_refs:
+            with self.subTest(href=href):
+                self.assertTrue(href.startswith("/"), "404 page links must be root-relative")
         for destination in (ROOT, *(ROOT / app for app in APPS)):
             with self.subTest(destination=str(destination.relative_to(ROOT))):
                 self.assertIn(destination, destinations)
